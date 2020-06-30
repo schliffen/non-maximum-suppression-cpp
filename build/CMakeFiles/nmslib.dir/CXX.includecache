@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ali/ProjLAB/YOLO_tvm/non-maximum-suppression-cpp/include/nms.cpp
+nms.hpp
+/home/ali/ProjLAB/YOLO_tvm/non-maximum-suppression-cpp/include/nms.hpp
+iostream
+-
+algorithm
+-
+
+/home/ali/ProjLAB/YOLO_tvm/non-maximum-suppression-cpp/include/nms.hpp
+vector
+-
+numeric
+-
+

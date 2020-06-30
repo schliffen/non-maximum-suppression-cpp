@@ -6,15 +6,14 @@
 
 #include <vector>
 #include <numeric>
-#include <opencv2/opencv.hpp>
+// #include <opencv2/opencv.hpp>
 
 enum PointInRectangle {XMIN, YMIN, XMAX, YMAX};
 
-std::vector<cv::Rect> nms(const std::vector<std::vector<float>> &,
-                          const float &);
+// std::vector<cv::Rect> 
+std::vector<std::vector<float>>  nms(const std::vector<std::vector<float>> &, const float &);
 
-std::vector<float> GetPointFromRect(const std::vector<std::vector<float>> &,
-                                    const PointInRectangle &);
+std::vector<float> GetPointFromRect(const std::vector<std::vector<float>> &, const PointInRectangle &);
 
 std::vector<float> ComputeArea(const std::vector<float> &,
                                const std::vector<float> &,
@@ -50,7 +49,7 @@ std::vector<int> WhereLarger(const std::vector<float> &,
 std::vector<int> RemoveByIndexes(const std::vector<int> &,
                                  const std::vector<int> &);
 
-std::vector<cv::Rect> BoxesToRectangles(const std::vector<std::vector<float>> &);
+// std::vector<cv::Rect> BoxesToRectangles(const std::vector<std::vector<float>> &);
 
 template <typename T>
 std::vector<T> FilterVector(const std::vector<T> &,

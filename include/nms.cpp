@@ -3,15 +3,18 @@
 // C++ version of http://www.pyimagesearch.com/2015/02/16/faster-non-maximum-suppression-python/
 
 #include "nms.hpp"
-using std::vector;
-using cv::Rect;
-using cv::Point;
+#include <iostream>
+#include <algorithm>    // std::sort
 
-vector<Rect> nms(const vector<vector<float>> & boxes,
-                 const float & threshold)
+using std::vector;
+// using cv::Rect;
+// using cv::Point;
+
+// vector<Rect> 
+std::vector<std::vector<float>> nms(const vector<vector<float>> & boxes, const float & threshold)
 {
   if (boxes.empty())
-  	return vector<Rect>();
+  	return std::vector<std::vector<float>>();//  vector<Rect>();
   
   // grab the coordinates of the bounding boxes
   auto x1 = GetPointFromRect(boxes, XMIN);
@@ -59,16 +62,19 @@ vector<Rect> nms(const vector<vector<float>> & boxes,
     idxs = RemoveByIndexes(idxs, deleteIdxs);
   }
 
-  return BoxesToRectangles(FilterVector(boxes, pick));
+  return FilterVector(boxes, pick); // using arrays instead of rectangles
 }
 
-vector<float> GetPointFromRect(const vector<vector<float>> & rect,
-                               const PointInRectangle & pos)
+vector<float> GetPointFromRect(const vector<vector<float>> & rect, const PointInRectangle & pos)
 {
   vector<float> points;
-  
-  for (const auto & p: rect)
-    points.push_back(p[pos]);
+
+  for (const auto & p: rect){
+
+    points.push_back( p[pos] );
+
+  }
+
   
   return points;
 }
@@ -210,16 +216,16 @@ vector<int> RemoveByIndexes(const vector<int> & vec,
   return resultVec;
 }
 
-vector<Rect> BoxesToRectangles(const vector<vector<float>> & boxes)
-{
-  vector<Rect> rectangles;
-  vector<float> box;
+// vector<Rect> BoxesToRectangles(const vector<vector<float>> & boxes)
+// {
+//   vector<Rect> rectangles;
+//   vector<float> box;
   
-  for (const auto & box: boxes)
-    rectangles.push_back(Rect(Point(box[0], box[1]), Point(box[2], box[3])));
+//   for (const auto & box: boxes)
+//     rectangles.push_back(Rect(Point(box[0], box[1]), Point(box[2], box[3])));
   
-  return rectangles;
-}
+//   return rectangles;
+// }
 
 template <typename T>
 vector<T> FilterVector(const vector<T> & vec,
